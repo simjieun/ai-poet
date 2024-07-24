@@ -1,5 +1,5 @@
-from dotenv import load_dotenv
-load_dotenv()
+# from dotenv import load_dotenv
+# load_dotenv()
 
 from langchain_openai import ChatOpenAI
 from langchain_core.messages import HumanMessage, SystemMessage
@@ -28,8 +28,6 @@ if st.button("시 작성 요청하기"):
 #     SystemMessage(content="Translate the following from English into Korean"),
 #     HumanMessage(content= content + "에 대한 시를 써줘!"),
 # ]
-
-
 
 # print(result)
 

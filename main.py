@@ -22,8 +22,7 @@ if st.button("시 작성 요청하기"):
             [("system", system_template), ("user", "{text}에 대한 시를 써줘")]
         )
         messages = prompt_template.invoke({"text": content})
-        chain = prompt_template | model | parser
-        result = chain.invoke(messages)
+        result = model.invoke(messages)
         st.write(parser.invoke(result))
 
 

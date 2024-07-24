@@ -4,9 +4,12 @@
 from langchain_openai import ChatOpenAI
 from langchain_core.messages import HumanMessage, SystemMessage
 from langchain_core.prompts import ChatPromptTemplate
+from langchain_core.output_parsers import StrOutputParser
 import streamlit as st
 
 model = ChatOpenAI()
+
+parser = StrOutputParser()
 
 st.title('인공지능 시인')
 
@@ -18,18 +21,11 @@ if st.button("시 작성 요청하기"):
         prompt_template = ChatPromptTemplate.from_messages(
             [("system", system_template), ("user", "{text}에 대한 시를 써줘")]
         )
-
         messages = prompt_template.invoke({"text": content})
-        result = model.invoke(messages)
-        st.write(result)
+        chain = prompt_template | model | parser
+        result = chain.invoke(messages)
+        st.write(parser.invoke(result))
 
-
-# messages = [
-#     SystemMessage(content="Translate the following from English into Korean"),
-#     HumanMessage(content= content + "에 대한 시를 써줘!"),
-# ]
-
-# print(result)
 
 
 

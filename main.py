@@ -15,7 +15,15 @@ st.title('인공지능 시인')
 
 content = st.text_input("시의 주제를 제시해주세요.")
 
-if st.button("시 작성 요청하기"):
+if 'clicked' not in st.session_state:
+    st.session_state.clicked = False
+
+def click_button():
+    st.session_state.clicked = True
+
+st.button("시 작성 요청하기", on_click=click_button)
+
+if content or st.session_state.clicked:
     with st.spinner('시 작성 중...'):
         system_template = "Translate the following from English into Korean"
         prompt_template = ChatPromptTemplate.from_messages(
@@ -24,7 +32,4 @@ if st.button("시 작성 요청하기"):
         messages = prompt_template.invoke({"text": content})
         result = model.invoke(messages)
         st.write(parser.invoke(result))
-
-
-
 

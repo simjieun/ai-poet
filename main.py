@@ -9,7 +9,9 @@ import streamlit as st
 import streamlit.components.v1 as components
 
 components.html("""
+            <head>
             <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2532708487251314" crossorigin="anonymous"></script>
+            </head>
             """, height=0)
 
 model = ChatOpenAI()

@@ -6,6 +6,11 @@ from langchain_core.messages import HumanMessage, SystemMessage
 from langchain_core.prompts import ChatPromptTemplate
 from langchain_core.output_parsers import StrOutputParser
 import streamlit as st
+import streamlit.components.v1 as components
+
+components.html("""
+            <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2532708487251314" crossorigin="anonymous"></script>
+            """, height=0)
 
 model = ChatOpenAI()
 

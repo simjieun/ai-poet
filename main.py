@@ -7,6 +7,7 @@ from langchain_core.prompts import ChatPromptTemplate
 from langchain_core.output_parsers import StrOutputParser
 import streamlit as st
 
+st.set_page_config(google_adsense_account="ca-pub-2532708487251314")
 model = ChatOpenAI()
 
 parser = StrOutputParser()
